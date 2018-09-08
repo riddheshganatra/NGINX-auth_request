@@ -1,0 +1,11 @@
+version: "3"
+services:
+
+  nginx:
+    links:
+      - nodejs-auth
+    volumes:
+      - ./nginx/dist/:/usr/share/nginx/html
+
+  nodejs-auth:
+    container_name: nodejs-auth

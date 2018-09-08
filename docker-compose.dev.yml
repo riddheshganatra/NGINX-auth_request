@@ -1,0 +1,21 @@
+version: "3"
+services:
+  nginx:
+    container_name: nginx-DEV
+    build: 
+      context: ./nginx
+      dockerfile: dev.Dockerfile
+    ports:
+      - 4200:80
+  nodejs-auth:
+    container_name: nodejs-auth-DEV
+    volumes:
+      - ./nodejs-auth/src:/app/src
+      - nodejs-auth_node_modules:/app/node_modules
+    build:
+      context: ./nodejs-auth/
+      dockerfile: dev.Dockerfile
+  
+
+volumes:
+  nodejs-auth_node_modules:
